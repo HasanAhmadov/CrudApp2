@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to CRUD App 2</h1>
+    <p>Manage your users, cars and orders efficiently.</p>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+                    <p class="card-text">Manage user accounts and information.</p>
+                    <a asp-controller="User" asp-action="Index" class="btn btn-primary">Go to Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cars</h5>
+                    <p class="card-text">Manage cars and track product information.</p>
+                    <a asp-controller="Car" asp-action="Index" class="btn btn-primary">Go to Cars</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Orders</h5>
+                    <p class="card-text">Manage orders and track product information.</p>
+                    <a asp-controller="Order" asp-action="Index" class="btn btn-primary">Go to Orders</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Search</h5>
+                    <p class="card-text">Search any order you want by filtering users and cars.</p>
+                    <a asp-controller="Order" asp-action="Search" class="btn btn-primary">Go to Search</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
