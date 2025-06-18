@@ -12,7 +12,7 @@ namespace CrudApp2.Models
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        [Display(Password = "Password")]
+        [Display(Name  = "Password")]
         public string Password { get; set; } = string.Empty;
     }
 }
