@@ -11,10 +11,10 @@ namespace CrudApp2.Services
         {
             _users.AddRange(new[]
             {
-                new User { Id = _userIdCounter++, Name = "Yunis Kazimli" },
-                new User { Id = _userIdCounter++, Name = "Farhad Ragimov" },
-                new User { Id = _userIdCounter++, Name = "Rahman Aslanov" },
-                new User { Id = _userIdCounter++, Name  ="Hidayat Huseynov"}
+                new User { UserId = _userIdCounter++, Name = "Yunis Kazimli" },
+                new User { UserId = _userIdCounter++, Name = "Farhad Ragimov" },
+                new User { UserId = _userIdCounter++, Name = "Rahman Aslanov" },
+                new User { UserId = _userIdCounter++, Name  ="Hidayat Huseynov"}
             });
         }
 
@@ -25,18 +25,18 @@ namespace CrudApp2.Services
 
         public static User? GetUserById(int id)
         {
-            return _users.FirstOrDefault(u => u.Id == id);
+            return _users.FirstOrDefault(u => u.UserId == id);
         }
 
         public void AddUser(User user)
         {
-            user.Id = _userIdCounter++;
+            user.UserId = _userIdCounter++;
             _users.Add(user);
         }
 
         public bool UpdateUser(User user)
         {
-            var existingUser = _users.FirstOrDefault(u => u.Id == user.Id);
+            var existingUser = _users.FirstOrDefault(u => u.UserId == user.UserId);
             if (existingUser != null)
             {
                 existingUser.Name = user.Name;
@@ -47,7 +47,7 @@ namespace CrudApp2.Services
 
         public bool DeleteUser(int id)
         {
-            var user = _users.FirstOrDefault(u => u.Id == id);
+            var user = _users.FirstOrDefault(u => u.UserId == id);
             if (user != null)
             {
                 _users.Remove(user);

@@ -5,10 +5,11 @@ namespace CrudApp2.Models
 {
     public class User : IdentityUser
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; } = string.Empty;
+
     }
 }
