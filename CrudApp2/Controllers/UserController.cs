@@ -1,9 +1,11 @@
 ﻿using CrudApp2.Models;
-using Microsoft.AspNetCore.Mvc;
 using CrudApp2.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CrudApp2.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly UserDataService _userDataService;
@@ -50,7 +52,7 @@ namespace CrudApp2.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, User user)
         {
-            if (id != user.Id)
+            if (id != user.UserId)
             {
                 return NotFound();
             }

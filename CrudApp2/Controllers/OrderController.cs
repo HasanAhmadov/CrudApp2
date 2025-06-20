@@ -1,10 +1,12 @@
 ﻿using CrudApp2.Models;
+using CrudApp2.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using CrudApp2.Services;
 
 namespace CrudApp2.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly OrderDataService _orderDataService;
@@ -35,7 +37,7 @@ namespace CrudApp2.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Users = new SelectList(UserDataService.GetAllUsers(), "Id", "Name");
+            ViewBag.Users = new SelectList(UserDataService.GetAllUsers(), "UserId", "Name");
             ViewBag.Cars = new SelectList(CarDataService.GetAllProducts(), "Id", "Brand");
             return View();
         }
@@ -50,7 +52,7 @@ namespace CrudApp2.Controllers
                 if (car == null)
                 {
                     ModelState.AddModelError("CarId", "Selected car doesn't exist");
-                    ViewBag.Users = new SelectList(UserDataService.GetAllUsers(), "Id", "Name");
+                    ViewBag.Users = new SelectList(UserDataService.GetAllUsers(), "UserId", "Name");
                     ViewBag.Cars = new SelectList(CarDataService.GetAllProducts(), "Id", "Brand");
                     return View(order);
                 }
@@ -59,7 +61,7 @@ namespace CrudApp2.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag.Users = new SelectList(UserDataService.GetAllUsers(), "Id", "Name");
+            ViewBag.Users = new SelectList(UserDataService.GetAllUsers(), "IUserId", "Name");
             ViewBag.Cars = new SelectList(CarDataService.GetAllProducts(), "Id", "Brand");
             return View(order);
         }
@@ -80,7 +82,7 @@ namespace CrudApp2.Controllers
                 return NotFound();
             }
 
-            ViewBag.Users = new SelectList(users, "Id", "Name", order.CreatedUserId);
+            ViewBag.Users = new SelectList(users, "UserId", "Name", order.CreatedUserId);
             ViewBag.Cars = new SelectList(cars, "Id", "Brand", order.CarId);
             return View(order);
         }
@@ -111,7 +113,7 @@ namespace CrudApp2.Controllers
                 return NotFound();
             }
 
-            ViewBag.Users = new SelectList(users, "Id", "Name", order.CreatedUserId);
+            ViewBag.Users = new SelectList(users, "UserId", "Name", order.CreatedUserId);
             ViewBag.Cars = new SelectList(cars, "Id", "Brand", order.CarId);
             return View(order);
         }

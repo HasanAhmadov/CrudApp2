@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CrudApp2.Services;
 using CrudApp2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrudApp2.Controllers
 {
+    [Authorize]
     public class CarController : Controller
     {
         private readonly CarDataService _carDataService;
